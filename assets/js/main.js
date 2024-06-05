@@ -252,3 +252,29 @@
   new PureCounter();
 
 })()
+
+emailjs.init('E2zyIQIxipRES_6i2')
+
+document.getElementById('contact_form').addEventListener('submit', function(event) {
+   event.preventDefault();
+
+   const serviceID = 'service_kb63vjw';
+   const templateID = 'template_q89fud5';
+
+   document.querySelector('.loading').classList.add('d-block');
+   document.querySelector('.error-message').classList.remove('d-block');
+   document.querySelector('.sent-message').classList.remove('d-block');
+
+   console.log(document.querySelector('.loading').className);
+
+   emailjs.sendForm(serviceID, templateID, this)
+    .then(() => {
+      document.querySelector('.loading').classList.remove('d-block');
+      document.querySelector('.sent-message').classList.add('d-block');
+      document.getElementById('contact_form').reset();
+    }, (err) => {
+      document.querySelector('.loading').classList.remove('d-block');
+      document.querySelector('.error-message').innerHTML = JSON.stringify(err);
+      document.querySelector('.error-message').classList.add('d-block');
+    });
+});
