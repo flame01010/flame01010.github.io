@@ -819,6 +819,11 @@ section .container {
   background: rgba(0, 0, 0, 0.6);
 }
 
+.portfolio .portfolio-wrap img {
+  width: 450px;
+  height: 220px;
+}
+
 .portfolio .portfolio-wrap::before {
   content: "";
   background: rgba(0, 0, 0, 0.6);
